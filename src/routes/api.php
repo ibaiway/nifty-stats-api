@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/newplayback', [PlaybackController::class, 'store']);
-Route::get('/countplaybacks', [PlaybackController::class, 'countPlaybacks']);
+Route::post('/newplayback', [PlaybackController::class, 'store'])->middleware('AuthClient');;
+Route::get('/countplaybacks', [PlaybackController::class, 'countPlaybacks'])->middleware('AuthNode');
