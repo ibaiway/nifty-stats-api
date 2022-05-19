@@ -12,8 +12,7 @@ class PlaybackController extends Controller
 
     public function countPlaybacks(Request $request)
     {
-    //   $tracksIds =  Playback::all()->count()->pluck('trackId')->toArray();
-    $tracksIds = Playback::select('trackId', DB::raw('count(*) as total'))->groupBy('trackId')->get();
+            $tracksIds = Playback::select('trackId', DB::raw('count(*) as total'))->groupBy('trackId')->get();
     return response()->json([
         'data' => $tracksIds,
     ], status:201);
